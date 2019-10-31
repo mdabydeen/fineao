@@ -1,0 +1,77 @@
+version: '3'
+
+services:
+
+  fin_be:
+    container_name: fineao-backend
+    build:
+      context: ./server
+      dockerfile: Dockerfile
+    entrypoint: ["/bin/sh", "./entrypoint.sh"]
+    volumes:
+      - ./server:/app
+      - /app/node_modules
+    ports:
+      - 8080:8080
+    depends_on:
+      - fin_db
+    networks:
+      - fineao
+    environment:
+      - NODE_ENV=development
+      - DB_HOST=db
+      - DB_USERNAME=fineao
+      - DB_PASSWORD=jediknight
+      - DB_NAME=fineao
+
+  fin_fe:
+    container_name: fineao-frontend
+    build:
+      context: ./app
+      dockerfile: Dockerfile
+    volumes:
+      - './app:/app'
+      - '/app/src/node_modules'
+    ports:
+      - '3000:3000'
+    environment:
+      - NODE_ENV=development
+    depends_on:
+      - fin_be
+
+  fin_db:
+    container_name: fineao-db
+    image: postgres:12.0-alpine
+    restart: always
+    volumes:
+      - db_data:/data/db
+    environment:
+      POSTGRES_PASSWORD: fineao
+      POSTGRES_USER: fineao
+      POSTGRES_PASSWORD: jediknight
+      POSTGRES_DATABASE: fineao
+    networks:
+      - fineao
+
+  fin_adminer:
+    container_name: fineao-adminer
+    image: adminer
+    depends_on:
+      - fin_db
+    environment:
+      ADMINER_DEFAULT_DB_DRIVER: mysql
+      ADMINER_DEFAULT_DB_HOST: db
+      ADMINER_DEFAULT_DB_NAME: fineao
+      ADMINER_DESIGN: nette
+      ADMINER_PLUGINS: tables-filter tinymce
+    ports:
+      - 9000:8080
+    networks:
+      - fineao
+
+networks:
+  fineao:
+    driver: bridge
+
+volumes:
+  db_data:
