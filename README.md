@@ -29,7 +29,7 @@ I've taken a full stack approach and focused on the following:
   - edit employees : `PUT /api/v1/product/:id`
   - deleteing employees : `DELETE /api/v1/product/:id`
 
-Used [Sequelize]() ORM for DB modeling and management
+Used [TypeORM]() ORM for DB modeling and management
 
 #### Future Considerations:
 - Add a security / auth layer, such that only authenticated users can add or modify employees
