@@ -129,7 +129,7 @@ $ cd server
 then run
 
 ```
-$ npx sequelize-cli db:migrate
+$ npx typeorm-cli db:migrate
 ```
 
 ### Start your engines
