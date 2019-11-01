@@ -107,7 +107,7 @@ Steps to setup:
 #### Config
 
 ##### Setup the DB
-Using `mariadb` create a database, let's call it `plexxis` for this case.
+Using `mariadb` create a database, let's call it `fineao` for this case.
 
 ##### Modify and Export your configs
 
