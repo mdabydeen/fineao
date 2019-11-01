@@ -4,7 +4,7 @@ import * as jwt from "jsonwebtoken";
 import { getRepository } from "typeorm";
 
 import config from "../config/config";
-import { User } from "../entity/User";
+import { User } from "../entity/Product";
 
 class AuthController {
   public static login = async (req: Request, res: Response) => {

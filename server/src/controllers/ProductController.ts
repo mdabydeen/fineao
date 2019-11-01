@@ -2,7 +2,7 @@ import { validate } from "class-validator";
 import { Request, Response } from "express";
 import { getRepository } from "typeorm";
 
-import { User } from "../entity/Product";
+import { Product } from "../entity/Product";
 
 class ProductController {
 

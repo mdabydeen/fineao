@@ -2,8 +2,8 @@
   "swagger": "2.0",
   "info": {
     "version": "1.0.0",
-    "title": "Yet Another Node.js Blogg Application API",
-    "description": "Yet Another Node.js Blogg Application API",
+    "title": "Fineao API",
+    "description": "A Simple Store Application API",
     "license": {
       "name": "MIT",
       "url": "https://opensource.org/licenses/MIT"
@@ -13,8 +13,8 @@
   "basePath": "/api/v1",
   "tags": [
     {
-      "name": "Users",
-      "description": "API for users in the system"
+      "name": "Products",
+      "description": "API for products in the system"
     }
   ],
   "schemes": [
@@ -27,19 +27,19 @@
     "application/json"
   ],
   "paths": {
-    "/users": {
+    "/product": {
       "post": {
         "tags": [
-          "Users"
+          "Products"
         ],
-        "description": "Create new user in system",
+        "description": "Create new product in system",
         "parameters": [
           {
-            "name": "user",
+            "name": "product",
             "in": "body",
-            "description": "User that we want to create",
+            "description": "Product that we want to create",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Product"
             }
           }
         ],
@@ -48,86 +48,86 @@
         ],
         "responses": {
           "200": {
-            "description": "New user is created",
+            "description": "New product is created",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Product"
             }
           }
         }
       },
       "get": {
         "tags": [
-          "Users"
+          "Products"
         ],
-        "summary": "Get all users in system",
+        "summary": "Get all products in system",
         "responses": {
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/Users"
+              "$ref": "#/definitions/Products"
             }
           }
         }
       }
     },
-    "/users/{userId}": {
+    "/products/{productId}": {
       "parameters": [
         {
-          "name": "userId",
+          "name": "productId",
           "in": "path",
           "required": true,
-          "description": "ID of user that we want to find",
+          "description": "ID of product that we want to find",
           "type": "string"
         }
       ],
       "get": {
         "tags": [
-          "Users"
+          "Products"
         ],
-        "summary": "Get user with given ID",
+        "summary": "Get product with given ID",
         "responses": {
           "200": {
-            "description": "User is found",
+            "description": "Products is found",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Products"
             }
           }
         }
       },
       "delete": {
-        "summary": "Delete user with given ID",
+        "summary": "Delete products with given ID",
         "tags": [
-          "Users"
+          "Products"
         ],
         "responses": {
           "200": {
-            "description": "User is deleted",
+            "description": "Products is deleted",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Product"
             }
           }
         }
       },
       "put": {
-        "summary": "Update user with give ID",
+        "summary": "Update product with give ID",
         "tags": [
-          "Users"
+          "Products"
         ],
         "parameters": [
           {
-            "name": "user",
+            "name": "product",
             "in": "body",
-            "description": "User with new values of properties",
+            "description": "Product with new values of properties",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Products"
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "User is updated",
+            "description": "Product is updated",
             "schema": {
-              "$ref": "#/definitions/User"
+              "$ref": "#/definitions/Product"
             }
           }
         }
@@ -135,7 +135,7 @@
     }
   },
   "definitions": {
-    "User": {
+    "Product": {
       "required": [
         "email",
         "_id"
@@ -157,9 +157,9 @@
         }
       }
     },
-    "Users": {
+    "Products": {
       "type": "array",
-      "$ref": "#/definitions/User"
+      "$ref": "#/definitions/Product"
     }
   }
 }
